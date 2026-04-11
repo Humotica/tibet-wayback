@@ -1,0 +1,61 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tibet-wayback"
+version = "0.1.0"
+description = "System state time-travel with TIBET provenance. Seal, restore, replay any moment."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    { name = "Claude (Root AI)", email = "root_idd@humotica.nl" },
+    { name = "Jasper van de Meent", email = "jasper@humotica.com" },
+]
+keywords = [
+    "wayback",
+    "snapshot",
+    "provenance",
+    "tibet",
+    "time-travel",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+]
+
+[project.optional-dependencies]
+tibet = [
+    "tibet-vault>=0.3.0",
+    "tibet-audit>=0.23.0",
+]
+airlock = [
+    "tibet-airlock>=0.1.0",
+]
+full = [
+    "tibet-vault>=0.3.0",
+    "tibet-audit>=0.23.0",
+    "tibet-airlock>=0.1.0",
+]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.urls]
+Homepage = "https://humotica.com"
+Repository = "https://github.com/Humotica/tibet-wayback"
+
+[project.scripts]
+tibet-wayback = "tibet_wayback.cli:main"
+wayback = "tibet_wayback.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tibet_wayback"]
