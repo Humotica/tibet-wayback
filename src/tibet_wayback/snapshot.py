@@ -414,6 +414,8 @@ class SnapshotDiff:
             parts.append(f"{len(self.packages_upgraded)} pkg upgraded")
         if self.packages_downgraded:
             parts.append(f"{len(self.packages_downgraded)} pkg downgraded")
+        if self.services_memory_delta:
+            parts.append(f"{len(self.services_memory_delta)} svc memory changed")
         if self.services_started:
             parts.append(f"{len(self.services_started)} svc started")
         if self.services_stopped:

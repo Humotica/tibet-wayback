@@ -395,8 +395,11 @@ class Wayback:
         If not, captures fresh audit against current state (for comparison).
         """
         seal = self.timeline.get(seal_id)
-        if not seal or not seal.snapshot:
+        if not seal:
             return None
+
+        # Load snapshot from disk (timeline doesn't store full snapshot)
+        snapshot = seal.snapshot or self._load_snapshot(seal.seal_id)
 
         result = {
             "seal_id": seal.seal_id,
@@ -405,11 +408,11 @@ class Wayback:
         }
 
         # Return stored audit if available
-        if seal.snapshot.audit_score is not None:
+        if snapshot and snapshot.audit_score is not None:
             result["audit"] = {
-                "score": seal.snapshot.audit_score,
-                "grade": seal.snapshot.audit_grade,
-                "checks": seal.snapshot.audit_check_count,
+                "score": snapshot.audit_score,
+                "grade": snapshot.audit_grade,
+                "checks": snapshot.audit_check_count,
                 "source": "sealed",
             }
         else:

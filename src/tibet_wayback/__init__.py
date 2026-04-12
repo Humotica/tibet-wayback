@@ -22,7 +22,7 @@ Authors: Jasper van de Meent & Root AI
 License: MIT
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Jasper van de Meent & Root AI"
 
 from .core import Wayback, Seal, WaybackTimeline
