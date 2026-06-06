@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tibet-wayback"
-version = "0.1.1"
-description = "System state time-travel with TIBET provenance. Seal, restore, replay any moment."
+version = "0.2.1"
+description = "System state time-travel with TIBET provenance. Seal, verify, rollback, restore, replay any moment."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.9"
@@ -28,6 +28,8 @@ classifiers = [
     "Topic :: System :: Systems Administration",
 ]
 dependencies = [
+    "jis-core>=0.4.0",
+    "tibet-core>=0.5.0",
     "typer>=0.9.0",
     "rich>=13.0.0",
 ]
